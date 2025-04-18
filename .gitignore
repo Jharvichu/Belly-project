@@ -1,0 +1,8 @@
+# Entornos virtuales
+act7/
+
+# Archivos de caché de Python
+__pycache__/
+
+# Archivos creados por editores
+.vscode/
