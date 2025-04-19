@@ -63,7 +63,11 @@ def elegir_numero_aleatorio(minimo, maximo):
 
 @given('que he comido {cukes:g} pepinos')
 def step_given_eaten_cukes(context, cukes):
-    context.belly.comer(cukes)
+    try:
+        context.belly.comer(cukes)
+        context.error = None
+    except ValueError as e:
+        context.exception = e
 
 @when('espero un tiempo aleatorio entre {min_time:g} y {max_time:g} horas')
 def step_when_random_wait(context, min_time, max_time):
@@ -83,3 +87,6 @@ def step_then_belly_should_growl(context):
 def step_then_belly_should_not_growl(context):
     assert not context.belly.esta_gruñendo(), "Se esperaba que el estómago no gruñera, pero lo hizo."
 
+@then('debería ocurrir un error de cantidad negativa.')
+def step_then_error_negativo(context):
+	assert isinstance(context.exception, ValueError), "Cantidad negativa no permitida."

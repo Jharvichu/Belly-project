@@ -10,3 +10,8 @@ def test_pepinos_negativo():
     belly = Belly()
     with pytest.raises(ValueError, match="No se puede comer una cantidad negativa de pepinos"): 
         belly.comer(-3)
+
+def test_pepinos_inmensos():
+    belly = Belly()
+    with pytest.raises(ValueError, match="No se puede comer mucha cantidad de pepinos"): 
+        belly.comer(200)
