@@ -3,6 +3,7 @@ act7/
 
 # Archivos de caché de Python
 __pycache__/
+.pytest_cache/
 
 # Archivos creados por editores
 .vscode/
