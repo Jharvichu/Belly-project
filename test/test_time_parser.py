@@ -1,5 +1,6 @@
 import pytest
 from features.steps.belly_steps import parsear_tiempo_en_horas
+from features.steps.belly_steps import elegir_numero_aleatorio
 
 @pytest.mark.parametrize("input_text, expected_hours", [
     ("una hora", 1.0),
@@ -19,3 +20,7 @@ from features.steps.belly_steps import parsear_tiempo_en_horas
 def test_parsear_tiempo_en_horas(input_text, expected_hours):
     result = parsear_tiempo_en_horas(input_text)
     assert pytest.approx(result, 0.001) == expected_hours
+
+def test_elegir_numero_aleatorio_en_rango():
+    resultado = elegir_numero_aleatorio(1, 3)
+    assert 1 <= resultado <= 3, "El número aleatorio no está dentro del rango esperado"
