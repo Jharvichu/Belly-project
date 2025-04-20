@@ -101,3 +101,15 @@ Característica: Característica del estómago
   Escenario: Saber cuántos pepinos he comido
     Dado que he comido 15 pepinos
     Entonces debería haber comido 15 pepinos
+  
+  @spanish
+  Escenario: Verificar que el estómago gruñe tras comer suficientes pepinos y esperar
+    Dado que he comido 20 pepinos
+    Cuando espero 2 horas
+    Entonces mi estómago debería gruñir
+
+  @spanish
+  Escenario: Predecir si mi estómago gruñirá tras comer y esperar
+    Dado que he comido 12 pepinos
+    Cuando espero 90 minutos
+    Entonces mi estómago debería gruñir
