@@ -27,12 +27,14 @@ def convertir_palabra_a_numero(palabra):
     
 # Funcion que convierte texto en horas decimales
 def parsear_tiempo_en_horas(description):
-    description = description.strip('"').strip(",").lower()
+    description = description.strip('"').lower()
     description = description.replace('y', ' ')
+    description = description.replace('and', ' ')
+    description = description.replace(',', ' ')
     description = description.strip()
 
     # Manejar casos especiales como 'media hora'
-    if description == 'media hora':
+    if description == 'media hora' or description == 'half hour' :
         return 0.5
     
     # Expresión regular para extraer horas y minutos

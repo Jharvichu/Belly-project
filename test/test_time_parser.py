@@ -15,6 +15,7 @@ from features.steps.belly_steps import elegir_numero_aleatorio
     ("una hora y veinte minutos", 1.3333),
     ("0 horas 45 minutos", 0.75),
     ("45 minutos", 0.75),
+    ("1 hora, 30 minutos y 45 segundos", 1.5125),
 ])
 
 def test_parsear_tiempo_en_horas(input_text, expected_hours):
