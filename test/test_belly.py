@@ -15,3 +15,9 @@ def test_pepinos_inmensos():
     belly = Belly()
     with pytest.raises(ValueError, match="No se puede comer mucha cantidad de pepinos"): 
         belly.comer(200)
+
+def test_gruñir_si_comido_muchos_pepinos():
+    belly = Belly()
+    belly.comer(15)
+    belly.esperar(2)
+    assert belly.esta_gruñendo() == True

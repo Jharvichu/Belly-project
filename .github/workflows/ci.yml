@@ -1,0 +1,67 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Instalar dependencias
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Ejecutar Pytest
+        run: |
+          PYTHONPATH=. pytest
+
+  behave:
+    run-on: ubuntu-latest
+    needs: pytest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependencias
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar Behave @spanish
+        run: behave --tags=@spanish
+
+      - name: Ejecutar Behave @english
+        run: behave --tags=@english
+
+      - name: Prueba especial 1000 pepinos
+        run: |
+          echo "Iniciando prueba"
+          start=$(date +%s)
+          behave -n "Comer 1000 pepinos y esperar 10 horas"
+          end=$(date +%s)
+          duracion=$((end - start))
+          echo "Prueba completada en $duracion s"
+          if [ "$duracion" -gt 10 ]; then
+            echo "La prueba tardó demasiado"
+            exit 1
+          fi
+
+      - name: Ejecutar pruebas @issue1
+        run: behave --tags=@issue1
