@@ -118,4 +118,9 @@ Característica: Característica del estómago
 	Escenario: Saber cuántos pepinos puedo comer antes de gruñir
 		Dado que he comido 8 pepinos
 		Cuando pregunto cuántos pepinos más puedo comer
-		Entonces debería decirme que puedo comer 2 pepinos más  
+		Entonces debería decirme que puedo comer 2 pepinos más
+
+	@simulando_reloj
+	Escenario: Registrar hora al comer pepinos
+		Dado que he comido 3 pepinos
+		Entonces se debe haber registrado la hora  

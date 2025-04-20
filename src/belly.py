@@ -1,11 +1,13 @@
 # src/belly.py
-# from src.clock import get_current_time
+from src.clock import get_current_time
 
 class Belly:
-    def __init__(self):
+    def __init__(self, clock_service=None):
         self.pepinos_comidos = 0
         self.tiempo_esperado = 0
         self.min_pepinos = 10
+        self.registro_tiempos = []
+        self.clock_service = clock_service
 
     def reset(self):
         self.pepinos_comidos = 0
@@ -18,6 +20,8 @@ class Belly:
             raise ValueError("No se puede comer mucha cantidad de pepinos")
         print(f"He comido {pepinos} pepinos.")
         self.pepinos_comidos += pepinos
+        if self.clock_service:
+            self.registro_tiempos.append(self.clock_service())
 
     def esperar(self, tiempo_en_horas):
         if tiempo_en_horas > 0:
@@ -33,3 +37,4 @@ class Belly:
     def pepinos_restantes(self):
         restante = self.min_pepinos - self.pepinos_comidos
         return restante
+    

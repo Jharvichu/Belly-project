@@ -1,5 +1,6 @@
 import pytest
 from src.belly import Belly
+from unittest.mock import MagicMock
 
 def test_pepinos_fraccionarios():
     belly = Belly()
@@ -43,3 +44,11 @@ def test_pepinos_restante():
     belly = Belly()
     belly.comer(8)
     assert belly.pepinos_restantes() == 2
+
+def test_comer_registra_tiempo_con_clock_mock():
+	fake_clock = MagicMock()
+	fake_clock.return_value = 12345  #  cualquiera
+	belly = Belly(clock_service=fake_clock)
+	belly.comer(5)
+	assert belly.pepinos_comidos == 5
+	assert belly.registro_tiempos == [12345]

@@ -106,3 +106,7 @@ def step_then_error_negativo(context):
 @then('debería decirme que puedo comer {cukes:g} pepinos más')
 def step_them_cuanto_podria_comer(context, cukes):
     assert context.restante == cukes, f"Esperado {cukes}, pero fue {context.restante}"
+
+@then('se debe haber registrado la hora')
+def step_verificacion_hora(context):
+	assert context.belly.registro_tiempos == [99999]
