@@ -25,7 +25,7 @@ jobs:
       
       - name: Ejecutar Pytest
         run: |
-          pytest test/test_belly.py test/test_time_parser.py
+          PYTHONPATH=. pytest test/test_belly.py test/test_time_parser.py
 
   behave:
     runs-on: ubuntu-latest
