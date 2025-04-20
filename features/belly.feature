@@ -113,3 +113,9 @@ Característica: Característica del estómago
     Dado que he comido 12 pepinos
     Cuando espero 90 minutos
     Entonces mi estómago debería gruñir
+
+  @criterio_nuevo
+	Escenario: Saber cuántos pepinos puedo comer antes de gruñir
+		Dado que he comido 8 pepinos
+		Cuando pregunto cuántos pepinos más puedo comer
+		Entonces debería decirme que puedo comer 2 pepinos más  

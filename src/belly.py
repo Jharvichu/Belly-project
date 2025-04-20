@@ -5,6 +5,7 @@ class Belly:
     def __init__(self):
         self.pepinos_comidos = 0
         self.tiempo_esperado = 0
+        self.min_pepinos = 10
 
     def reset(self):
         self.pepinos_comidos = 0
@@ -28,3 +29,7 @@ class Belly:
         if self.tiempo_esperado >= 1.5 and self.pepinos_comidos > 10:
             return True
         return False
+    
+    def pepinos_restantes(self):
+        restante = self.min_pepinos - self.pepinos_comidos
+        return restante

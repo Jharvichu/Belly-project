@@ -38,3 +38,8 @@ def test_estomago_predecir_gruñido():
     belly.comer(12)
     belly.esperar(1.5)
     assert belly.esta_gruñendo() == True
+
+def test_pepinos_restante():
+    belly = Belly()
+    belly.comer(8)
+    assert belly.pepinos_restantes() == 2

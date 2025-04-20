@@ -81,6 +81,10 @@ def step_when_wait_time_description(context, time_description):
     total_time_in_hours = parsear_tiempo_en_horas (time_description)
     context.belly.esperar(total_time_in_hours)
 
+@when('pregunto cuántos pepinos más puedo comer')
+def step_when_pregunto_cuantos_faltan(context):
+    context.restante = context.belly.pepinos_restantes()
+
 @then('mi estómago debería gruñir')
 def step_then_belly_should_growl(context):
     assert context.belly.esta_gruñendo(), "Se esperaba que el estómago gruñera, pero no lo hizo."
@@ -98,3 +102,7 @@ def step_then_eaten_cukes(context, cukes):
 @then('debería ocurrir un error de cantidad negativa.')
 def step_then_error_negativo(context):
 	assert isinstance(context.exception, ValueError), "Cantidad negativa no permitida."
+
+@then('debería decirme que puedo comer {cukes:g} pepinos más')
+def step_them_cuanto_podria_comer(context, cukes):
+    assert context.restante == cukes, f"Esperado {cukes}, pero fue {context.restante}"
